@@ -16,12 +16,12 @@
         <link href="static/plugin/font-awesome/css/all.min.css" rel="stylesheet">
         <link href="static/plugin/et-line/style.css" rel="stylesheet">
         <link href="static/plugin/themify-icons/themify-icons.css" rel="stylesheet">
-        <link href="static/plugin/owl-carousel/css/owl.carousel.min.css" rel="stylesheet">
+        <!-- <link href="static/plugin/owl-carousel/css/owl.carousel.min.css" rel="stylesheet"> -->
         <link href="static/plugin/magnific/magnific-popup.css" rel="stylesheet">
         <!-- theme css -->
         <link href="static/style/master.css" rel="stylesheet">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
-        <script type="text/javascript" src="custom.js"></script>
+        <!-- <script type="text/javascript" src="custom.js"></script> -->
     </head>
 
     <!-- Body Start -->
@@ -654,7 +654,7 @@
                             </div>        
                         </div>
                     </div>
-
+                    <form method="post" id="productForm">
                     <!-- form -->
                     <div class="contact-form border white-bg">
                         <div class="sm-title p-25px-b">
@@ -662,7 +662,6 @@
                             <p class="m-0px">We are here to answer any question you may have</p>
                             <i class="far fa-paper-plane"></i>
                         </div>
-                        <form method="post">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -684,13 +683,12 @@
                                 </div>
                                 <div class="col-md-4 text-left text-md-right">
                                     <div class="send">
-                                        <button class="m-btn m-btn-theme" value="Get In Touch" onclick="sendMail()">Get in touch</button>
+                                        <button class="m-btn m-btn-theme" type="submit" value="Get In Touch">Get in touch</button>
                                     </div>
                                 </div>
-
                             </div>
-                        </form>
                     </div>
+                    </form>
                     <!-- end form -->
                 </div>
             </section>
@@ -746,3 +744,32 @@
     </body>
 
 </html>
+<script type="text/javascript">
+ $('#productForm').submit(function(e) {
+   e.preventDefault();
+   let name = $("#name:input").val();
+   let email = $("#email:input").val();
+   let message = $("#message:input").val();
+   let subjectEmail = "Client Send From portfolio";
+   let reciverEmail = "asif.developer92@gmail.com";
+    Email.send({
+    Host: "smtp.gmail.com",
+    Port: 25,
+    Security: 'auto',
+    Username : "asif.developer92@gmail.com",
+    Password : "ssgzxhcoibguocff",
+    To : reciverEmail,
+    From : email,
+    Subject : name,
+    Body : message,
+    }).then(
+      message => alert("mail sent successfully"),
+      $("#name:input").val(""),
+      $("#email:input").val(""),
+      $("#message:input").val(""),
+    ).catch(
+      error  => alert(error)
+    );
+  });
+
+</script>

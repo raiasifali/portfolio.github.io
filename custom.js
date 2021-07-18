@@ -6,6 +6,8 @@ function sendMail(){
  let reciverEmail = "asif.developer92@gmail.com";
   Email.send({
   Host: "smtp.gmail.com",
+  Port: 25,
+  Security: auto,
   Username : "asif.developer92@gmail.com",
   Password : "ssgzxhcoibguocff",
   To : reciverEmail,
